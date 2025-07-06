@@ -10,7 +10,7 @@ const NoteForm = ({ onSubmit, editNote, onCancel, availableTags = [] }) => {
   const [showTagSuggestions, setShowTagSuggestions] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Populate form when editing
+
   useEffect(() => {
     if (editNote) {
       setFormData({
@@ -76,7 +76,7 @@ const NoteForm = ({ onSubmit, editNote, onCancel, availableTags = [] }) => {
     try {
       await onSubmit(formData);
       if (!editNote) {
-        // Reset form only if creating new note
+
         setFormData({
           title: '',
           content: '',
@@ -103,7 +103,7 @@ const NoteForm = ({ onSubmit, editNote, onCancel, availableTags = [] }) => {
       </h2>
       
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Title Input */}
+
         <div>
           <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
             Title *
@@ -120,7 +120,7 @@ const NoteForm = ({ onSubmit, editNote, onCancel, availableTags = [] }) => {
           />
         </div>
 
-        {/* Content Textarea */}
+
         <div>
           <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-1">
             Content *
@@ -137,7 +137,7 @@ const NoteForm = ({ onSubmit, editNote, onCancel, availableTags = [] }) => {
           />
         </div>
 
-        {/* Tags Input */}
+
         <div>
           <label htmlFor="tags" className="block text-sm font-medium text-gray-700 mb-1">
             Tags
@@ -153,7 +153,7 @@ const NoteForm = ({ onSubmit, editNote, onCancel, availableTags = [] }) => {
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
             
-            {/* Tag Suggestions */}
+
             {showTagSuggestions && filteredSuggestions.length > 0 && (
               <div className="absolute z-10 w-full bg-white border border-gray-300 rounded-md shadow-lg mt-1 max-h-40 overflow-y-auto">
                 {filteredSuggestions.map((tag) => (
@@ -171,7 +171,7 @@ const NoteForm = ({ onSubmit, editNote, onCancel, availableTags = [] }) => {
           </div>
         </div>
 
-        {/* Current Tags Display */}
+
         {formData.tags.length > 0 && (
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -197,7 +197,7 @@ const NoteForm = ({ onSubmit, editNote, onCancel, availableTags = [] }) => {
           </div>
         )}
 
-        {/* Form Actions */}
+
         <div className="flex gap-3 pt-4">
           <button
             type="submit"

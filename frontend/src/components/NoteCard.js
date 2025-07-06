@@ -27,7 +27,7 @@ const NoteCard = ({ note, onDelete, onEdit }) => {
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200">
-      {/* Note Header */}
+      
       <div className="flex justify-between items-start mb-3">
         <h3 className="text-lg font-semibold text-gray-800 flex-1 mr-2">
           {note.title}
@@ -56,7 +56,7 @@ const NoteCard = ({ note, onDelete, onEdit }) => {
         </div>
       </div>
 
-      {/* Note Content */}
+      
       <div className="mb-4">
         <p className="text-gray-600 whitespace-pre-wrap">
           {isExpanded ? note.content : truncateContent(note.content)}
@@ -71,7 +71,7 @@ const NoteCard = ({ note, onDelete, onEdit }) => {
         )}
       </div>
 
-      {/* Tags */}
+      
       {note.tags && note.tags.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-3">
           {note.tags.map((tag, index) => (
@@ -85,12 +85,12 @@ const NoteCard = ({ note, onDelete, onEdit }) => {
         </div>
       )}
 
-      {/* Created Date */}
+      
       <div className="text-sm text-gray-500 border-t pt-3">
         Created: {formatDate(note.createdAt)}
       </div>
 
-      {/* Delete Confirmation Modal */}
+      
       {showDeleteConfirm && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 max-w-sm mx-4">
