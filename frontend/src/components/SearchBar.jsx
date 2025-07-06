@@ -26,7 +26,7 @@ const SearchBar = ({ onSearch, onTagFilter, availableTags = [] }) => {
   return (
     <div className="bg-white p-4 rounded-lg shadow-md mb-6">
       <div className="flex flex-col sm:flex-row gap-4">
-        {/* Search Input */}
+
         <div className="flex-1">
           <label htmlFor="search" className="block text-sm font-medium text-gray-700 mb-1">
             Search Notes
@@ -41,7 +41,7 @@ const SearchBar = ({ onSearch, onTagFilter, availableTags = [] }) => {
           />
         </div>
 
-        {/* Tag Filter */}
+        
         <div className="sm:w-48">
           <label htmlFor="tag-filter" className="block text-sm font-medium text-gray-700 mb-1">
             Filter by Tag
@@ -61,7 +61,7 @@ const SearchBar = ({ onSearch, onTagFilter, availableTags = [] }) => {
           </select>
         </div>
 
-        {/* Clear Filters Button */}
+        
         {(searchTerm || selectedTag) && (
           <div className="flex items-end">
             <button
@@ -74,7 +74,7 @@ const SearchBar = ({ onSearch, onTagFilter, availableTags = [] }) => {
         )}
       </div>
 
-      {/* Active Filters Display */}
+      
       {(searchTerm || selectedTag) && (
         <div className="mt-3 flex flex-wrap gap-2">
           {searchTerm && (
