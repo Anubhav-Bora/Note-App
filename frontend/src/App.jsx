@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { notesAPI } from './services/api';
-import NoteForm from './components/NoteForm';
-import NoteList from './components/NoteList';
-import SearchBar from './components/searchbar';
+import NoteForm from './components/NoteForm.jsx';
+import NoteList from './components/NoteList.jsx';
+import SearchBar from './components/SearchBar.jsx';
 
 function App() {
   const [notes, setNotes] = useState([]);
