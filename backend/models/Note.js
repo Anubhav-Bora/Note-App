@@ -21,7 +21,6 @@ class Note{
             return { valid: false, message: 'Content is required and must be a string' };
         }
         
-        // Check for reasonable length limits
         if (title.trim().length > 200) {
             return { valid: false, message: 'Title must be less than 200 characters' };
         }

@@ -29,7 +29,7 @@ router.get('/', (req, res) => {
     }
   });  
 
-// GET single note by ID
+
 router.get('/:id', (req, res) => {
   try {
     const { id } = req.params;
@@ -95,7 +95,6 @@ router.get('/:id', (req, res) => {
         return res.status(404).json({ error: 'Note not found' });
       }
 
-      // Validate that title and content are provided
       if (!title || !content) {
         return res.status(400).json({ error: 'Title and content are required' });
       }
