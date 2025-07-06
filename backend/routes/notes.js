@@ -25,9 +25,25 @@ router.get('/', (req, res) => {
 
       res.json(filteredNotes);
     } catch (error) {
-      res.status(500).json({ error: ' server error' });
+      res.status(500).json({ error: 'Internal server error' });
     }
   });  
+
+// GET single note by ID
+router.get('/:id', (req, res) => {
+  try {
+    const { id } = req.params;
+    const note = notes.find(note => note.id === id);
+    
+    if (!note) {
+      return res.status(404).json({ error: 'Note not found' });
+    }
+    
+    res.json(note);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
   router.post('/', (req, res) => {
     try {
@@ -78,6 +94,11 @@ router.get('/', (req, res) => {
       if (noteIndex === -1) {
         return res.status(404).json({ error: 'Note not found' });
       }
+
+      // Validate that title and content are provided
+      if (!title || !content) {
+        return res.status(400).json({ error: 'Title and content are required' });
+      }
   
       const validation = Note.validateNote({ title, content });
       if (!validation.valid) {
@@ -88,12 +109,11 @@ router.get('/', (req, res) => {
         ? [...new Set(tags.map(tag => tag.trim()).filter(tag => tag !== ''))]
         : [];
   
-      notes[noteIndex] = {
-        ...notes[noteIndex],
+      notes[noteIndex].update({
         title: title.trim(),
         content: content.trim(),
         tags: processedTags
-      };
+      });
   
       res.json(notes[noteIndex]);
     } catch (error) {
