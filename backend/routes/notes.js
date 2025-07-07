@@ -10,8 +10,8 @@ router.get('/', (req, res) => {
   
       if (tag) {
         filteredNotes = filteredNotes.filter(note => 
-          note.tags.some(noteTag => 
-            noteTag.toLowerCase().includes(tag.toLowerCase())
+          note.tags && note.tags.some(noteTag => 
+            noteTag.toLowerCase() === tag.toLowerCase()
           )
         );
       }
