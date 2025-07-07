@@ -8,10 +8,10 @@ router.get('/', (req, res) => {
       const { tag, search } = req.query;
       let filteredNotes = notes;
   
-      if (tag) {
+      if (tag && tag.trim() !== "") {
         filteredNotes = filteredNotes.filter(note => 
           note.tags && note.tags.some(noteTag => 
-            noteTag.toLowerCase() === tag.toLowerCase()
+            noteTag.trim().toLowerCase() === tag.trim().toLowerCase()
           )
         );
       }
