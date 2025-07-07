@@ -66,7 +66,6 @@ const NoteForm = ({ onSubmit, editNote, onCancel, availableTags = [] }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
     let tags = formData.tags;
     if (tagInput.trim()) {
       const cleanTag = tagInput.trim().toLowerCase();
@@ -87,14 +86,12 @@ const NoteForm = ({ onSubmit, editNote, onCancel, availableTags = [] }) => {
         ...formData,
         tags,
       });
-      if (!editNote) {
-        setFormData({
-          title: '',
-          content: '',
-          tags: []
-        });
-        setTagInput('');
-      }
+      setFormData({
+        title: '',
+        content: '',
+        tags: []
+      });
+      setTagInput('');
     } catch (error) {
       console.error('Error submitting note:', error);
       alert('Error saving note. Please try again.');

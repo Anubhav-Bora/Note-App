@@ -149,12 +149,6 @@ function App() {
           onEdit={startEditing}
           isLoading={isLoading}
         />
-
-        <div className="text-center mt-12 pt-8 border-t border-gray-200">
-          <p className="text-gray-500 text-sm">
-            Built with React.js and Node.js
-          </p>
-        </div>
       </div>
     </div>
   );
