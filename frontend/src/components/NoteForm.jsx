@@ -65,23 +65,35 @@ const NoteForm = ({ onSubmit, editNote, onCancel, availableTags = [] }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     
+    let tags = formData.tags;
+    if (tagInput.trim()) {
+      const cleanTag = tagInput.trim().toLowerCase();
+      if (!tags.includes(cleanTag)) {
+        tags = [...tags, cleanTag];
+      }
+    }
+
     if (!formData.title.trim() || !formData.content.trim()) {
       alert('Please fill in both title and content');
       return;
     }
 
     setIsSubmitting(true);
-    
-    try {
-      await onSubmit(formData);
-      if (!editNote) {
 
+    try {
+      await onSubmit({
+        ...formData,
+        tags,
+      });
+      if (!editNote) {
         setFormData({
           title: '',
           content: '',
           tags: []
         });
+        setTagInput('');
       }
     } catch (error) {
       console.error('Error submitting note:', error);
